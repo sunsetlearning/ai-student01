@@ -1,0 +1,512 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome to Alice's Super Surf Shack</title>
+    <link
+      rel="icon"
+      href="https://www.sunsetlearning.com/wp-content/uploads/2017/06/favicon.png"
+    />
+
+    <!-- Brand Style -->
+    <style>
+      :root {
+        --blue-deep: #00457c;
+        --blue-surf: #0f9fd6;
+        --orange-sunset: #ff8a3d;
+        --sand: #fff7ea;
+        --text-main: #233040;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: var(--text-main);
+        background: linear-gradient(
+          180deg,
+          #e0f6ff 0%,
+          #f5fbff 40%,
+          var(--sand) 100%
+        );
+      }
+
+      header {
+        background: linear-gradient(90deg, var(--blue-deep), var(--blue-surf));
+        color: #ffffff;
+        padding: 1.25rem 1.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      header .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      header img {
+        height: 52px;
+        border-radius: 50%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+      }
+
+      header .brand-title {
+        font-weight: 700;
+        font-size: 1.25rem;
+        letter-spacing: 0.04em;
+      }
+
+      header .tagline {
+        font-size: 0.9rem;
+        opacity: 0.9;
+      }
+
+      header nav {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.95rem;
+      }
+
+      header nav a {
+        color: #ffffff;
+        text-decoration: none;
+        opacity: 0.9;
+        padding-bottom: 2px;
+        border-bottom: 2px solid transparent;
+      }
+
+      header nav a:hover {
+        opacity: 1;
+        border-bottom-color: rgba(255, 255, 255, 0.7);
+      }
+
+      main {
+        padding: 2.5rem 1.5rem 3rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+        gap: 2rem;
+        align-items: center;
+      }
+
+      @media (max-width: 800px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      h1 {
+        color: var(--blue-deep);
+        font-size: 2.4rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .hero-lead {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+      }
+
+      .hero-highlight {
+        color: var(--orange-sunset);
+        font-weight: 600;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(15, 159, 214, 0.08);
+        color: var(--blue-surf);
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .hero-badge span.wave {
+        font-size: 1.1rem;
+      }
+
+      .hero-cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.25rem;
+      }
+
+      .btn {
+        border-radius: 999px;
+        padding: 0.65rem 1.4rem;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        text-decoration: none;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--orange-sunset), #ffb266);
+        color: #ffffff;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+      }
+
+      .btn-primary:hover {
+        filter: brightness(1.05);
+      }
+
+      .btn-ghost {
+        background: rgba(255, 255, 255, 0.85);
+        color: var(--blue-deep);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .btn-ghost:hover {
+        background: #ffffff;
+      }
+
+      .hero-note {
+        font-size: 0.9rem;
+        margin-top: 0.75rem;
+        color: #56627c;
+      }
+
+      .hero-visual {
+        position: relative;
+      }
+
+      .hero-card {
+        background: #ffffff;
+        border-radius: 1.25rem;
+        padding: 1rem 1.25rem;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+        text-align: center;
+      }
+
+      .hero-card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 1rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .hero-card-title {
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+        color: var(--blue-deep);
+      }
+
+      .hero-card-text {
+        font-size: 0.9rem;
+        color: #56627c;
+      }
+
+      section {
+        margin-top: 3rem;
+      }
+
+      h2 {
+        color: var(--orange-sunset);
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .section-intro {
+        font-size: 0.98rem;
+        max-width: 700px;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      @media (max-width: 900px) {
+        .card-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .card-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 1rem;
+        padding: 1.25rem;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      }
+
+      .card-title {
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+        color: var(--blue-deep);
+      }
+
+      .card-tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        padding: 0.15rem 0.55rem;
+        border-radius: 999px;
+        background: rgba(15, 159, 214, 0.06);
+        color: var(--blue-surf);
+        margin-bottom: 0.35rem;
+      }
+
+      .card-text {
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .help-note {
+        margin-top: 2.5rem;
+        padding: 1.1rem 1.25rem;
+        border-radius: 0.9rem;
+        background: rgba(0, 69, 124, 0.04);
+        font-size: 0.9rem;
+      }
+
+      .help-note strong {
+        color: var(--blue-deep);
+      }
+
+      footer {
+        background-color: #f5f5f5;
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.85rem;
+        color: #777;
+      }
+
+      footer a {
+        color: var(--blue-deep);
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <img
+          src="https://d31uennr5dcgcs.cloudfront.net/cisco-training/ai-agent/surfcar.png"
+          alt="Alice's Surf Shack Logo"
+        />
+        <div>
+          <div class="brand-title">Alice's Super Surf Shack</div>
+          <div class="tagline">Catch the perfect wave, lad or lass 🌊</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#lessons">Lessons</a>
+        <a href="#rentals">Rentals</a>
+        <a href="#community">Community</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div>
+          <div class="hero-badge">
+            <span class="wave">🏄‍♀️</span>
+            Surf, chill, and ride with Alice
+          </div>
+          <h1>Welcome to Alice's Super Surf Shack</h1>
+          <p class="hero-lead">
+            Hey bro, I’m <span class="hero-highlight">Alice</span>, your virtual
+            surf guide from ACME. Whether you’re a total beginner or a
+            certified chad of the waves, I’m here to help you with lessons,
+            gear, and the smoothest session planning on the beach.
+          </p>
+          <p class="hero-lead">
+            Book a lesson, grab a board, or just ask me anything about your
+            surf plans and orders — we’ll ride this wave together.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#lessons" class="btn btn-primary">Book a Surf Lesson</a>
+            <a href="#rentals" class="btn btn-ghost">View Board Rentals</a>
+          </div>
+
+          <p class="hero-note">
+            Need help with an existing booking or order? Pop your details into
+            the chat and I’ll sort you out, lad or lass.
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card">
+            <img
+              src="https://d31uennr5dcgcs.cloudfront.net/cisco-training/ai-agent/surfcar.png"
+              alt="Surf Shack Illustration"
+            />
+            <div class="hero-card-title">Perfect conditions, every session</div>
+            <div class="hero-card-text">
+              Live order help, schedule tweaks, and gear guidance — straight
+              from Alice, your surf-loving virtual assistant.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lessons Section -->
+      <section id="lessons">
+        <h2>Surf Lessons for Every Level</h2>
+        <p class="section-intro">
+          From your very first paddle-out to carving clean lines on head-high
+          waves, Alice has your back, bro. Choose the vibe that matches your
+          skill level and let’s get you booked in.
+        </p>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-tag">Beginner</div>
+            <div class="card-title">First Wave Session</div>
+            <p class="card-text">
+              Learn the basics: safety, paddling, popping up, and catching your
+              very first wave with a certified instructor cheering you on.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-tag">Intermediate</div>
+            <div class="card-title">Flow & Style Clinic</div>
+            <p class="card-text">
+              For lads and lasses who already stand up and ride — we dial in
+              your turns, timing, and confidence in real conditions.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-tag">Advanced</div>
+            <div class="card-title">Performance Coaching</div>
+            <p class="card-text">
+              Take your surfing to chad status: wave selection, speed control,
+              and advanced maneuvers with personalized feedback.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rentals Section -->
+      <section id="rentals">
+        <h2>Board & Gear Rentals</h2>
+        <p class="section-intro">
+          Traveling light, bro? We’ve got a full quiver ready for you on the
+          sand. Just swing by, or hit the chat for availability and bookings.
+        </p>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-title">Soft Tops & Beginner Boards</div>
+            <p class="card-text">
+              Super stable boards perfect for first-timers and gentle rollers.
+              Alice can help you pick the right size for your height and weight.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-title">Shortboards & Hybrids</div>
+            <p class="card-text">
+              For the hungry lads and lasses chasing performance. Choose from a
+              curated selection tuned for local breaks.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-title">Wetsuits & Accessories</div>
+            <p class="card-text">
+              Stay warm, comfy, and sun-safe. Wetsuits, leashes, wax, and more
+              — just ask Alice what’s best for today’s conditions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Community Section -->
+      <section id="community">
+        <h2>Community & Vibes</h2>
+        <p class="section-intro">
+          Surfing is better with a crew. Join our sunrise sessions, cleanup
+          days, and mellow sunset hangs — Alice will keep you posted on events
+          and sign-ups.
+        </p>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-title">Sunrise Paddles</div>
+            <p class="card-text">
+              Start the day right with gentle dawn patrol waves and a warm
+              coffee on the beach after.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-title">Local Beach Cleanups</div>
+            <p class="card-text">
+              Paddle, pick, protect. Help keep our lineup clean and ocean
+              friends happy.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-title">Beginner Meetups</div>
+            <p class="card-text">
+              A safe space for new surfers to learn, laugh, and share wipeout
+              stories with other bros and lasses.
+            </p>
+          </div>
+        </div>
+
+        <div class="help-note">
+          <strong>Need help, lad or lass?</strong> Use the chat widget in the
+          corner to talk with Alice about bookings, orders, gear questions, or
+          schedule changes.
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      &copy; Sunset Learning Institute | 
+      <a href="https://www.sunsetlearning.com" target="_blank"
+        >sunsetlearning.com</a
+      >
+    </footer>
+
+    <!-- Put Chat Widget 1 Line Below -->
+    <div
+      id="divicw"
+      data-bind="88A6C4CF-64EA-4EA3-AF11-7CEA34D7A910"
+      data-org=""
+      data-guid="7f73be0f-bd27-46ce-ab9a-68022431a0bc"
+    ></div>
+    <script>
+      {3}var i={t:function(){try{var e=document.getElementById("divicw"),t=document.createElement("script");t.src="https://media.imi.chat/widget/js/imichatinit.js?t="+new Date().toISOString(),e.insertAdjacentElement("afterend",t),t.addEventListener("load",function(){console.log(new Date().toISOString(),"Livechat script loaded successfully!")}),t.addEventListener("error",function(){console.log(new Date().toISOString(),"Error loading Livechat script");i.o(e)})}catch(e){console.error(e)}},o:function(e){e.insertAdjacentHTML("afterend",'<iframe id="tls_al_frm" frameborder="0" style="overflow:hidden;height:208px;width:394px;position:fixed;display:block;right:48px;bottom:12px;z-index:99999;display:none;"></iframe>');var t=document.getElementById("tls_al_frm"),n=t.contentWindow,d=n.document;d.open();d.write("<!doctype html><html><head><meta charset='utf-8'><title>Untitled Document</title><style>body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#99a0b0;font-size:14px}.popover__content{background-color:#fbfbfe;padding:1.5rem;border-radius:5px;width:300px;box-shadow:0 2px 5px 0 rgba(0,0,0,0.26);position:relative}.popover__message{font-weight:600;color:#56627c;font-size:16px}.pull-left{float:left}.clearfix{clear:both}.hdr-txt{width:218px;margin-top:3px}.para-txt a{text-decoration:none;color:#005cde}.close-btn{position:absolute;right:15px;top:15px}.close-btn a{text-decoration:none;font-weight:400;color:#56627c;font-size:16px}</style></head><body><div class='popover__content'><div class='close-btn'><a href='#' onclick='closeTLSAlert()'>X</a></div><div class='popover__message'><div class='pull-left hdr-txt'>This browser version is not supported on LiveChat.</div></div><div class='clearfix'></div><p class='para-txt'>Please update your browser to the latest version and re-open the website to access the widget.</p></div><script>function closeTLSAlert(){window.parent.postMessage({key:'close_tls_alert',value:'close_tls_alert',action:'close_tls_alert'},'*');}<\/script></body></html>");d.close();t.style.display='block';window.addEventListener('message',function(e){'close_tls_alert'===e.data.action&&i.s()})},s:function(){var e=document.getElementById('tls_al_frm');e&&e.remove()}};i.t();
+    </script>
+    <!-- Chat Widget Above -->
+  </body>
+</html>
